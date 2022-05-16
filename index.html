@@ -10,24 +10,34 @@
   </head>
   <body>
     <h1>Tic-Tac-Toe</h1>
-    <button>1 Player</button>
-    <button>2 Players</button>
+    <button id="one-player">1 Player</button>
+    <button id="two-players">2 Players</button>
     <form action="#">
-      <label for="player1">Player 1</label>
+      <label for="player1">Player 1:</label>
       <input
         type="text"
         name="player1"
         id="player1"
         placeholder="Enter your name..."
       />
-      <label for="player2">Player 2</label>
+      <button id="submit-player1">Submit</button>
+      <label for="player2">Player 2:</label>
       <input
         type="text"
         name="player2"
         id="player2"
         placeholder="Enter your name..."
       />
+      <button id="submit-player2">Submit</button>
     </form>
+    <div class="mark-buttons-div">
+      <button class="mark-button" id="">X</button>
+      <button class="mark-button">O</button>
+    </div>
+    <div class="players">
+      <h3>Player 1: <span id="player1-name"></span></h3>
+      <h3>Player 2: <span id="player2-name"></span></h3>
+    </div>
     <div class="grid-container">
       <div class="block" id="block-1"></div>
       <div class="block" id="block-2"></div>
