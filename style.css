@@ -1,0 +1,21 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: solid black;
+}
+
+.grid-container > .block {
+  border: solid black;
+}
+
+.grid-container > .block:hover {
+  cursor: pointer;
+}
