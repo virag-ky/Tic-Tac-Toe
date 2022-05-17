@@ -57,7 +57,12 @@ startGameBtn.addEventListener("click", () => {
 
       let newBlocks = blocks.filter((block) => block.innerText === "");
       index = Math.floor(Math.random() * newBlocks.length);
-      newBlocks[index].innerText = computerSelection;
+
+      let i = newBlocks.length;
+      while (i > 1) {
+        newBlocks[index].innerText = computerSelection;
+        i--;
+      }
 
       blocks.forEach((block) => {
         if (block.innerText === computerSelection) {
@@ -65,11 +70,6 @@ startGameBtn.addEventListener("click", () => {
         }
       });
 
-      arrayOfBlocks.every((item) => {
-        if (item !== "") {
-          winner = tie;
-        }
-      });
       checkForWinningPatterns(arrayOfBlocks);
       console.log(arrayOfBlocks, winner);
     })
@@ -135,5 +135,13 @@ const checkForWinningPatterns = (array) => {
     ) {
       winner = computer;
     }
+  }
+
+  if (winner !== undefined) {
+    document.querySelector("h4").innerText = `The winner is ${winner}`;
+  }
+
+  if (winner === undefined && array.every((item) => item !== "")) {
+    document.querySelector("h4").innerText = tie;
   }
 };
