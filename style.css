@@ -14,8 +14,16 @@
 
 .grid-container > .block {
   border: solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
 }
 
 .grid-container > .block:hover {
   cursor: pointer;
+}
+
+h4 {
+  font-size: 2rem;
 }

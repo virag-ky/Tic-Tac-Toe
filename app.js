@@ -43,6 +43,7 @@ buttonsXO.forEach((button) =>
 );
 
 let index;
+let newBlocks;
 let winner;
 const tie = "It's a tie!";
 const arrayOfBlocks = ["", "", "", "", "", "", "", "", ""];
@@ -55,7 +56,7 @@ startGameBtn.addEventListener("click", () => {
       block.innerText = playerSelection;
       arrayOfBlocks[blocks.indexOf(block)] += playerSelection;
 
-      let newBlocks = blocks.filter((block) => block.innerText === "");
+      newBlocks = blocks.filter((block) => block.innerText === "");
       index = Math.floor(Math.random() * newBlocks.length);
 
       let i = newBlocks.length;
