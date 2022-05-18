@@ -4,26 +4,236 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 100px 0;
+  background: rgb(6, 1, 41);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: rgb(4, 242, 250);
+  margin-bottom: 80px;
+}
+
+main {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
 .grid-container {
-  width: 500px;
-  height: 500px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: solid black;
+  row-gap: 10px;
+  column-gap: 10px;
 }
 
 .grid-container > .block {
-  border: solid black;
+  border: 2px solid rgb(4, 242, 250);
+  width: 200px;
+  height: 200px;
   display: flex;
+  font-size: 8rem;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  border-radius: 20px;
+}
+
+.fa-times {
+  color: rgb(169, 7, 245);
+}
+
+.fa-o {
+  color: aquamarine;
 }
 
 .grid-container > .block:hover {
   cursor: pointer;
+  box-shadow: 0 0 20px rgb(4, 242, 250);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 600px;
+}
+
+label {
+  color: rgb(4, 242, 250);
+  font-size: 2.2rem;
+}
+
+input {
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  color: yellow;
+}
+
+input:focus {
+  outline: none;
+}
+
+#submit-player1 {
+  width: 20%;
+  border-radius: 20px;
+  border: thin solid rgb(4, 242, 250);
+  color: rgb(4, 242, 250);
+  padding: 10px 0;
+  background: transparent;
+  font-size: 1.8rem;
+  margin-bottom: 50px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 600px;
+  width: 600px;
+}
+
+.mark-buttons-div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mark-buttons-div > h3 {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.mark-button {
+  border-radius: 10px;
+  font-size: 2.2rem;
+  padding: 10px 15px;
+  border: 3px solid rgb(4, 242, 250);
+  background: transparent;
+  color: yellow;
+}
+
+.mark-button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgb(4, 242, 250);
+}
+
+.players > h3 {
+  color: rgb(4, 242, 250);
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.players > h3 > span {
+  color: yellow;
+  font-size: 2rem;
+}
+
+.start-game, .new-game {
+  background: transparent;
+  border: 2px solid rgb(4, 242, 250);
+  color: rgb(4, 242, 250);
+  font-size: 1.5rem;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.new-game {
+  width: 200px;
+}
+
+.start-game:hover, .new-game:hover, #submit-player1:hover {
+  cursor: pointer;
+  color: yellow;
+  box-shadow: 0 0 10px rgb(4, 242, 250);
 }
 
 h4 {
-  font-size: 2rem;
+  font-size: 2.6rem;
+  color: yellow;
+}
+
+@media (max-width: 950px) {
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+
+  main {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .grid-container > .block {
+    width: 100px;
+    height: 100px;
+    font-size: 4rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  label {
+    font-size: 1.5rem;
+  }
+
+  input {
+    font-size: 1.2rem;
+  }
+
+  #submit-player1 {
+    width: 30%;
+    font-size: 1.2rem;
+    padding: 5px 0;
+  }
+
+  .info {
+    width: 100%;
+    height: auto;
+    gap: 50px;
+  }
+
+  .mark-buttons-div {
+    flex-direction: column;
+  }
+  
+  .mark-buttons-div > h3 {
+    font-size: 1.5rem;
+  }
+  
+  .mark-button {
+    font-size: 1.5rem;
+  }
+
+  .players > h3 {
+    font-size: 1.5rem;
+  }
+  
+  .players > h3 > span {
+    font-size: 1.2rem;
+  }
+  
+  .start-game, .new-game {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  .new-game {
+    width: 150px;
+    font-size: 1.2rem;
+  }
 }

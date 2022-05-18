@@ -9,10 +9,14 @@ const player2Span = document.getElementById("player2-name");
 const buttonsXO = [...document.querySelectorAll(".mark-button")];
 const blocks = [...document.getElementsByClassName("block")];
 const startGameBtn = document.querySelector(".start-game");
+const newGameBtn = document.querySelector(".new-game");
+const infoDiv = document.querySelector(".info");
 
+infoDiv.style.display = "none";
 markButtons.style.display = "none";
 playersDiv.style.display = "none";
 startGameBtn.style.display = "none";
+newGameBtn.style.display = "none";
 player2Name.value = "computer";
 player2Name.setAttribute("readonly", "readonly");
 
@@ -20,19 +24,25 @@ let player;
 let computer;
 let playerSelection;
 let computerSelection;
+let regex = /^\s+$/;
 
+//Submit the player
 submitPlayer.addEventListener("click", (e) => {
   e.preventDefault();
+  if (player1Name.value.trim() === "" || player1Name.value.match(regex)) {
+    return;
+  }
   form.style.display = "none";
+  infoDiv.style.display = "flex";
   playersDiv.style.display = "block";
-  markButtons.style.display = "block";
+  markButtons.style.display = "flex";
   player2Span.innerText = player2Name.value;
-  player1Span.innerText = player1Name.value;
-
+  player1Span.innerText = player1Name.value.trim();
   player = player1Span.innerText;
   computer = player2Span.innerText;
 });
 
+//Players selection of marks
 buttonsXO.forEach((button) =>
   button.addEventListener("click", (e) => {
     playerSelection = e.target.innerText;
@@ -45,34 +55,53 @@ buttonsXO.forEach((button) =>
 let index;
 let newBlocks;
 let winner;
-const tie = "It's a tie!";
 const arrayOfBlocks = ["", "", "", "", "", "", "", "", ""];
 
+//Start game
 startGameBtn.addEventListener("click", () => {
   startGameBtn.style.display = "none";
 
   blocks.forEach((block) =>
     block.addEventListener("click", () => {
-      block.innerText = playerSelection;
+      if (block.innerHTML !== "" || winner !== undefined) {
+        return;
+      }
+
+      if (playerSelection === "X") {
+        block.innerHTML = `<i class="fas fa-times"></i>`;
+      } else if (playerSelection === "O") {
+        block.innerHTML = `<i class="fa fa-o"></i>`;
+      }
+
       arrayOfBlocks[blocks.indexOf(block)] += playerSelection;
 
-      newBlocks = blocks.filter((block) => block.innerText === "");
+      //The computer will select a random empty block
+      newBlocks = blocks.filter((block) => block.innerHTML === "");
       index = Math.floor(Math.random() * newBlocks.length);
 
       let i = newBlocks.length;
       while (i > 1) {
-        newBlocks[index].innerText = computerSelection;
+        newBlocks[index].innerHTML =
+          computerSelection === "O"
+            ? `<i class="fas fa-o"></i>`
+            : `<i class="fas fa-times"></i>`;
         i--;
       }
 
       blocks.forEach((block) => {
-        if (block.innerText === computerSelection) {
-          arrayOfBlocks[blocks.indexOf(block)] = computerSelection;
+        if (
+          block.innerHTML === `<i class="fas fa-o"></i>` &&
+          computerSelection === "O"
+        ) {
+          arrayOfBlocks[blocks.indexOf(block)] = "O";
+        } else if (
+          block.innerHTML === `<i class="fas fa-times"></i>` &&
+          computerSelection === "X"
+        ) {
+          arrayOfBlocks[blocks.indexOf(block)] = "X";
         }
       });
-
       checkForWinningPatterns(arrayOfBlocks);
-      console.log(arrayOfBlocks, winner);
     })
   );
 });
@@ -139,10 +168,16 @@ const checkForWinningPatterns = (array) => {
   }
 
   if (winner !== undefined) {
-    document.querySelector("h4").innerText = `The winner is ${winner}`;
+    document.querySelector("h4").innerText = `The winner is ${winner}!`;
+    newGameBtn.style.display = "block";
   }
 
   if (winner === undefined && array.every((item) => item !== "")) {
-    document.querySelector("h4").innerText = tie;
+    document.querySelector("h4").innerText = `It's a tie!`;
+    newGameBtn.style.display = "block";
   }
 };
+
+newGameBtn.addEventListener("click", () => {
+  document.location.reload();
+});
