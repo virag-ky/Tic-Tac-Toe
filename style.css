@@ -18,6 +18,13 @@ body {
 h1 {
   font-size: 3.5rem;
   color: rgb(4, 242, 250);
+  margin-bottom: 80px;
+}
+
+main {
+  display: flex;
+  gap: 50px;
+  align-items: center;
 }
 
 .grid-container {
@@ -39,7 +46,7 @@ h1 {
 }
 
 .fa-times {
-  color: rgb(196, 47, 233);
+  color: rgb(169, 7, 245);
 }
 
 .fa-o {
@@ -61,13 +68,13 @@ form {
 
 label {
   color: rgb(4, 242, 250);
-  font-size: 1.6rem;
+  font-size: 2.2rem;
 }
 
 input {
   border: none;
   background: transparent;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: yellow;
 }
 
@@ -80,15 +87,19 @@ input:focus {
   border-radius: 20px;
   border: thin solid rgb(4, 242, 250);
   color: rgb(4, 242, 250);
-  padding: 3px 0;
+  padding: 10px 0;
   background: transparent;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   margin-bottom: 50px;
 }
 
-#submit-player1:hover {
-  cursor: pointer;
-  color: yellow;
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 600px;
+  width: 600px;
 }
 
 .mark-buttons-div {
@@ -99,14 +110,14 @@ input:focus {
 
 .mark-buttons-div > h3 {
   color: #fff;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .mark-button {
   border-radius: 10px;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   padding: 10px 15px;
-  border: 2px solid rgb(4, 242, 250);
+  border: 3px solid rgb(4, 242, 250);
   background: transparent;
   color: yellow;
 }
@@ -118,13 +129,13 @@ input:focus {
 
 .players > h3 {
   color: rgb(4, 242, 250);
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
 }
 
 .players > h3 > span {
   color: yellow;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .start-game, .new-game {
@@ -136,13 +147,93 @@ input:focus {
   padding: 10px;
 }
 
-.start-game:hover, .new-game:hover {
+.new-game {
+  width: 200px;
+}
+
+.start-game:hover, .new-game:hover, #submit-player1:hover {
   cursor: pointer;
   color: yellow;
   box-shadow: 0 0 10px rgb(4, 242, 250);
 }
 
 h4 {
-  font-size: 3rem;
+  font-size: 2.6rem;
   color: yellow;
+}
+
+@media (max-width: 950px) {
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+
+  main {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .grid-container > .block {
+    width: 100px;
+    height: 100px;
+    font-size: 4rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  label {
+    font-size: 1.5rem;
+  }
+
+  input {
+    font-size: 1.2rem;
+  }
+
+  #submit-player1 {
+    width: 30%;
+    font-size: 1.2rem;
+    padding: 5px 0;
+  }
+
+  .info {
+    width: 100%;
+    height: auto;
+    gap: 50px;
+  }
+
+  .mark-buttons-div {
+    flex-direction: column;
+  }
+  
+  .mark-buttons-div > h3 {
+    font-size: 1.5rem;
+  }
+  
+  .mark-button {
+    font-size: 1.5rem;
+  }
+
+  .players > h3 {
+    font-size: 1.5rem;
+  }
+  
+  .players > h3 > span {
+    font-size: 1.2rem;
+  }
+  
+  .start-game, .new-game {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  .new-game {
+    width: 150px;
+    font-size: 1.2rem;
+  }
 }

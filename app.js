@@ -10,7 +10,9 @@ const buttonsXO = [...document.querySelectorAll(".mark-button")];
 const blocks = [...document.getElementsByClassName("block")];
 const startGameBtn = document.querySelector(".start-game");
 const newGameBtn = document.querySelector(".new-game");
+const infoDiv = document.querySelector(".info");
 
+infoDiv.style.display = "none";
 markButtons.style.display = "none";
 playersDiv.style.display = "none";
 startGameBtn.style.display = "none";
@@ -22,15 +24,20 @@ let player;
 let computer;
 let playerSelection;
 let computerSelection;
+let regex = /^\s+$/;
 
 //Submit the player
 submitPlayer.addEventListener("click", (e) => {
   e.preventDefault();
+  if (player1Name.value.trim() === "" || player1Name.value.match(regex)) {
+    return;
+  }
   form.style.display = "none";
+  infoDiv.style.display = "flex";
   playersDiv.style.display = "block";
   markButtons.style.display = "flex";
   player2Span.innerText = player2Name.value;
-  player1Span.innerText = player1Name.value;
+  player1Span.innerText = player1Name.value.trim();
   player = player1Span.innerText;
   computer = player2Span.innerText;
 });
@@ -56,7 +63,7 @@ startGameBtn.addEventListener("click", () => {
 
   blocks.forEach((block) =>
     block.addEventListener("click", () => {
-      if (block.innerHTML !== "") {
+      if (block.innerHTML !== "" || winner !== undefined) {
         return;
       }
 
