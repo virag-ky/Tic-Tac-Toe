@@ -53,21 +53,37 @@ startGameBtn.addEventListener("click", () => {
 
   blocks.forEach((block) =>
     block.addEventListener("click", () => {
-      block.innerText = playerSelection;
+      if (playerSelection === "X") {
+        block.innerHTML = `<i class="fas fa-times"></i>`;
+      } else if (playerSelection === "O") {
+        block.innerHTML = `<i class="fas fa-o"></i>`;
+      }
+
       arrayOfBlocks[blocks.indexOf(block)] += playerSelection;
 
-      newBlocks = blocks.filter((block) => block.innerText === "");
+      newBlocks = blocks.filter((block) => block.innerHTML === "");
       index = Math.floor(Math.random() * newBlocks.length);
 
       let i = newBlocks.length;
       while (i > 1) {
-        newBlocks[index].innerText = computerSelection;
+        newBlocks[index].innerHTML =
+          computerSelection === "O"
+            ? `<i class="fas fa-o"></i>`
+            : `<i class="fas fa-times"></i>`;
         i--;
       }
 
       blocks.forEach((block) => {
-        if (block.innerText === computerSelection) {
-          arrayOfBlocks[blocks.indexOf(block)] = computerSelection;
+        if (
+          block.innerHTML === `<i class="fas fa-o"></i>` &&
+          computerSelection === "O"
+        ) {
+          arrayOfBlocks[blocks.indexOf(block)] = "O";
+        } else if (
+          block.innerHTML === `<i class="fas fa-times"></i>` &&
+          computerSelection === "X"
+        ) {
+          arrayOfBlocks[blocks.indexOf(block)] = "X";
         }
       });
 
