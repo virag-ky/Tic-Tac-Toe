@@ -28,7 +28,7 @@ submitPlayer.addEventListener("click", (e) => {
   e.preventDefault();
   form.style.display = "none";
   playersDiv.style.display = "block";
-  markButtons.style.display = "block";
+  markButtons.style.display = "flex";
   player2Span.innerText = player2Name.value;
   player1Span.innerText = player1Name.value;
   player = player1Span.innerText;
@@ -63,7 +63,7 @@ startGameBtn.addEventListener("click", () => {
       if (playerSelection === "X") {
         block.innerHTML = `<i class="fas fa-times"></i>`;
       } else if (playerSelection === "O") {
-        block.innerHTML = `<i class="fas fa-o"></i>`;
+        block.innerHTML = `<i class="fa fa-o"></i>`;
       }
 
       arrayOfBlocks[blocks.indexOf(block)] += playerSelection;
